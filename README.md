@@ -40,4 +40,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ## Commands to run
  - `npx shadcn@latest init`
  - `npx shadcn@latest add --all`
+ - `npm i drizzle-orm @neondatabase/serverless dotenv`
+ - `npm i -D drizzle-kit tsx`
+ 
  
