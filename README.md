@@ -42,5 +42,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
  - `npx shadcn@latest add --all`
  - `npm i drizzle-orm @neondatabase/serverless dotenv`
  - `npm i -D drizzle-kit tsx`
- 
+ - `npm install better-auth` [Auth](https://better-auth.com/docs/installation)
+ - `npx auth@latest generate`
+
+
  
