@@ -21,7 +21,6 @@ import {
 import Link from "next/link";
 
 import { authClient } from "@/lib/auth-client";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const formSchema = z
@@ -37,7 +36,6 @@ const formSchema = z
   });
 
 export const SignUpView = () => {
-  const router = useRouter();
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
 
@@ -60,11 +58,32 @@ export const SignUpView = () => {
         name: data.name,
         email: data.email,
         password: data.password,
+        callbackURL: "/",
       },
       {
         onSuccess: () => {
           setPending(false);
-          router.push("/");
+        },
+        onError: ({ error }) => {
+          setPending(false);
+          setError(error.message);
+        },
+      },
+    );
+  };
+
+  const onSocial = (provider : "google" | "github") => {
+    setError(null);
+    setPending(true);
+
+    authClient.signIn.social(
+      {
+        provider: provider,
+        callbackURL: "/",
+      },
+      {
+        onSuccess: () => {
+          setPending(false);
         },
         onError: ({ error }) => {
           setPending(false);
@@ -183,7 +202,7 @@ export const SignUpView = () => {
 
                 <div className="grid grid-cols-2 gap-4">
                   <Button
-                    onClick={() => {}}
+                    onClick={() => onSocial("google")}
                     variant="outline"
                     type="button"
                     className="w-full"
@@ -196,6 +215,7 @@ export const SignUpView = () => {
                     type="button"
                     className="w-full"
                     disabled={pending}
+                    onClick={() => onSocial("github")}
                   >
                     Github
                   </Button>

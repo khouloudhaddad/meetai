@@ -45,5 +45,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
  - `npm install better-auth` [Auth](https://better-auth.com/docs/installation)
  - `npx auth@latest generate`
 
+ ## Login with Google and Github
+ Follow instructions on documentation of better auth [Here..](https://better-auth.com/docs/authentication/github)
+
 
  
